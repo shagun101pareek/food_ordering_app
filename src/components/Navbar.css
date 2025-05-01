@@ -73,7 +73,7 @@
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: #ffe605;
     font-weight: 500;
     transition: color 0.3s;
     white-space: nowrap;
@@ -81,7 +81,7 @@
   
   .nav-icon {
     font-size: 1.2rem;
-    color: rgb(0, 0, 0);
+    color: #ffe605;
   }
   
   /* Cart counter */
