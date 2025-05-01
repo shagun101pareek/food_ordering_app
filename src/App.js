@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import FoodMenu from './components/FoodMenu' ;
+import Cart from './components/Cart';
 import './App.css';
 
-function App() {
+export default function App() {
+  const [cart, setCart] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar cartCount={cart.length} />
+      <div className="app-content">
+        <Routes>
+          <Route path="/" element={<FoodMenu cart={cart} setCart={setCart} />} />
+          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
+          {/* Add other routes as needed */}
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
-
-export default App;

@@ -1,0 +1,126 @@
+.navbar {
+    background-color: #b1333e;
+    box-shadow: 0 2px 10px rgba(36, 35, 35, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+  }
+  
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    gap: 2rem;
+  }
+  
+  /* Brand styling - left aligned */
+  .brand {
+    text-decoration: none;
+    color: #ffe605;
+    min-width: 160px;
+  }
+  
+  .brand h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  
+  /* Extended search bar */
+  .search-box {
+    flex: 1;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 1rem;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    transition: all 0.3s;
+  }
+  
+  .search-input:focus {
+    border-color: #e63946;
+    box-shadow: 0 0 0 2px rgba(230, 57, 70, 0.2);
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+  }
+  
+  /* Navigation links */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-left: auto;
+  }
+  
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    transition: color 0.3s;
+    white-space: nowrap;
+  }
+  
+  .nav-icon {
+    font-size: 1.2rem;
+    color: rgb(0, 0, 0);
+  }
+  
+  /* Cart counter */
+  .cart-count {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background-color: white;
+    color: #e63946;
+    border-radius: 50%;
+    width: 1.2rem;
+    height: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar-container {
+      flex-direction: column;
+      padding: 1rem;
+      gap: 1rem;
+    }
+    
+    .brand {
+      margin-bottom: 0;
+      align-self: flex-start;
+    }
+    
+    .search-box {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links {
+      width: 100%;
+      justify-content: space-between;
+      margin-left: 0;
+    }
+  }
