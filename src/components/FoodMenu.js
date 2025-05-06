@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -28,153 +28,187 @@ const FoodMenu = () => {
       title: 'Margherita Pizza',
       price: 12.99,
       image: MargheritaPizza,
-      description: 'A timeless classic with rich tomato sauce, fresh mozzarella, and fragrant basil.'
+      description: 'A timeless classic with rich tomato sauce, fresh mozzarella, and fragrant basil.',
+      tags: ['CLASSIC', 'VEGETARIAN']
     },
     {
       id: 2,
       title: 'Pepperoni Pizza',
       price: 8.99,
       image: PepperoniPizza,
-      description: ' A crowd favorite topped generously with spicy pepperoni and gooey cheese.'
+      description: 'A crowd favorite topped generously with spicy pepperoni and gooey cheese.',
+      tags: ['SPICY', 'MEAT']
     },
     {
       id: 3,
       title: 'Veggie Supreme Pizza',
       price: 11.99,
       image: VeggieSupremePizza,
-      description: 'Loaded with colorful veggies for a fresh and hearty bite every time.'
-    }
-    ,
+      description: 'Loaded with colorful veggies for a fresh and hearty bite every time.',
+      tags: ['VEGETARIAN', 'HEALTHY']
+    },
     {
       id: 4,
       title: 'BBQ Chicken Pizza',
       price: 8.99,
       image: BBQChickenPizza,
-      description: 'Smoky, tangy BBQ sauce meets tender grilled chicken and caramelized onions.'
-    }
-    ,
+      description: 'Smoky, tangy BBQ sauce meets tender grilled chicken and caramelized onions.',
+      tags: ['CHICKEN', 'BBQ']
+    },
     {
       id: 5,
       title: 'Hawaiian Pizza',
       price: 8.99,
       image: HawaiianPizza,
-      description: 'A sweet and savory twist with juicy pineapple and savory ham.'
-    }
-    ,
+      description: 'A sweet and savory twist with juicy pineapple and savory ham.',
+      tags: ['SWEET', 'MEAT']
+    },
     {
       id: 6,
       title: 'Four Cheese Pizza',
       price: 8.99,
       image: FourCheesePizza,
-      description: 'Rich and creamy with a perfect blend of four gourmet cheeses.'
-    }
-    ,
+      description: 'Rich and creamy with a perfect blend of four gourmet cheeses.',
+      tags: ['CHEESY', 'VEGETARIAN']
+    },
     {
       id: 7,
       title: 'Meat Lovers Pizza',
       price: 8.99,
       image: MeatLoversPizza,
-      description: 'A hearty pizza packed with multiple meats for a bold, savory flavor.'
-    }
-    ,
+      description: 'A hearty pizza packed with multiple meats for a bold, savory flavor.',
+      tags: ['MEAT', 'SAVORY']
+    },
     {
-      id: 9,
+      id: 8,
       title: 'Pesto Pizza',
       price: 8.99,
       image: PestoPizza,
-      description: 'A fresh, aromatic alternative topped with pesto and creamy cheese.'
-    }
-    ,
+      description: 'A fresh, aromatic alternative topped with pesto and creamy cheese.',
+      tags: ['VEGETARIAN', 'AROMATIC']
+    },
     {
-      id: 10,
+      id: 9,
       title: 'Spicy Jalapeño Pizza',
       price: 8.99,
       image: JalapenoPizza,
-      description: 'A fiery twist for spice lovers, layered with jalapeños and zesty chili flakes.'
-    }
-    ,
+      description: 'A fiery twist for spice lovers, layered with jalapeños and zesty chili flakes.',
+      tags: ['SPICY', 'HOT']
+    },
     {
-      id: 11,
+      id: 10,
       title: 'Mushroom Truffle Pizza',
       price: 8.99,
       image: MushroomPizza,
-      description: 'Earthy and luxurious with wild mushrooms and a drizzle of aromatic truffle oil.'
-    }
-    ,
+      description: 'Earthy and luxurious with wild mushrooms and a drizzle of aromatic truffle oil.',
+      tags: ['GOURMET', 'VEGETARIAN']
+    },
     {
-      id: 12,
+      id: 11,
       title: 'Mediterranean Pizza',
       price: 8.99,
       image: MediterraneanPizza,
-      description: 'A fresh Mediterranean mix featuring olives, feta, tomatoes, and herbs.'
-    }
-    ,
+      description: 'A fresh Mediterranean mix featuring olives, feta, tomatoes, and herbs.',
+      tags: ['MEDITERRANEAN', 'VEGETARIAN']
+    },
     {
       id: 12,
       title: 'Paneer Tikka Pizza',
       price: 8.99,
       image: PaneerTikkaPizza,
-      description: 'A fusion delight with smoky paneer tikka cubes and spicy Indian flavors.'
-    }
-    ,
+      description: 'A fusion delight with smoky paneer tikka cubes and spicy Indian flavors.',
+      tags: ['INDIAN', 'VEGETARIAN']
+    },
     {
       id: 13,
       title: 'White Sauce Pizza',
       price: 8.99,
       image: WhiteSaucePizza,
-      description: 'A creamy delight with a rich white sauce base and subtle herbs.'
-    }
-    ,
+      description: 'A creamy delight with a rich white sauce base and subtle herbs.',
+      tags: ['CREAMY', 'VEGETARIAN']
+    },
     {
       id: 14,
       title: 'Breakfast Pizza',
       price: 8.99,
       image: BreakfastPizza,
-      description: 'Morning-inspired pizza topped with eggs, bacon, and cheese.'
-    }
-    ,
+      description: 'Morning-inspired pizza topped with eggs, bacon, and cheese.',
+      tags: ['BREAKFAST', 'MEAT']
+    },
     {
       id: 15,
       title: 'Taco Pizza',
       price: 8.99,
       image: TacoPizza,
-      description: 'A fun mash-up with taco-seasoned beef, cheese, lettuce, and salsa-style toppings.'
-    }
-    ,
+      description: 'A fun mash-up with taco-seasoned beef, cheese, lettuce, and salsa-style toppings.',
+      tags: ['TEX-MEX', 'MEAT']
+    },
     {
       id: 16,
       title: 'Buffalo Chicken Pizza',
       price: 8.99,
       image: BuffaloChickenPizza,
-      description: 'Bold and tangy with spicy buffalo chicken and ranch drizzle.'
+      description: 'Bold and tangy with spicy buffalo chicken and ranch drizzle.',
+      tags: ['SPICY', 'CHICKEN']
     }
   ]);
 
   const [cart, setCart] = useState([]);
+  const sliderRef = useRef(null);
+  const carouselRef = useRef(null); // New ref for carousel container
 
   const addToCart = (item) => {
-    setCart([...cart, item]);
-    localStorage.setItem('cart', JSON.stringify([...cart, item]));
+    const newCart = [...cart, item];
+    setCart(newCart);
+    localStorage.setItem('cart', JSON.stringify(newCart));
   };
+
+  const handleWheel = (e) => {
+    // Check if carouselRef exists and contains the event target
+    if (carouselRef.current && carouselRef.current.contains(e.target)) {
+      e.preventDefault();
+      if (e.deltaY < 0) {
+        sliderRef.current.slickPrev();
+      } else {
+        sliderRef.current.slickNext();
+      }
+    }
+  };
+
+  useEffect(() => {
+    const currentCarousel = carouselRef.current;
+    if (currentCarousel) {
+      currentCarousel.addEventListener('wheel', handleWheel, { passive: false });
+    }
+    return () => {
+      if (currentCarousel) {
+        currentCarousel.removeEventListener('wheel', handleWheel);
+      }
+    };
+  }, []);
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: '0',
+    arrows: false,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToShow: 3,
+          centerPadding: '60px'
         }
       },
       {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
+          centerMode: false
         }
       }
     ]
@@ -182,24 +216,38 @@ const FoodMenu = () => {
 
   return (
     <div className="food-menu">
-      <h2>Life's Too Short for Bad Pizza!</h2>
-      <div className="menu-scroller">
-        <div className="menu-grid">
-          {menuItems.map(item => (
-            <div key={item.id} className="food-card">
-              <img src={item.image} alt={item.title} />
-              <div className="food-info">
-                <h3>{item.title}</h3>
-                <p className="description">{item.description}</p>
-                <div className="price-cart">
-                  <span className="price">${item.price.toFixed(2)}</span>
-                  <button onClick={() => addToCart(item)}>Add to Cart</button>
+      {/* ... keep your header section ... */}
+
+      <div 
+        className="pizza-carousel-container" 
+        ref={carouselRef} // Attach the ref here
+      >
+        <Slider {...settings} ref={sliderRef}>
+          {menuItems.map((item) => (
+            <div key={item.id} className="pizza-slide">
+              <div className="pizza-card">
+                {item.tags && (
+                  <div className="pizza-tags">
+                    {item.tags.map((tag, i) => (
+                      <span key={i} className="tag">{tag}</span>
+                    ))}
+                  </div>
+                )}
+                <img src={item.image} alt={item.title} className="pizza-img" />
+                <div className="pizza-info">
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                  <div className="price-cart">
+                    <span className="price">${item.price.toFixed(2)}</span>
+                    <button onClick={() => addToCart(item)}>Add to Cart</button>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
-        </div>
+        </Slider>
       </div>
+
       <Link to="/cart" className="view-cart">
         View Cart ({cart.length})
       </Link>
